@@ -1,5 +1,6 @@
 # Système de Gestion des Commandes d'Équipements Internes
 
+
 ## Contexte et problématique métier
 
 Ce projet a été conçu et réalisé dans le cadre d'un exercice technique de **5 heures**. L'objectif est de moderniser et d'automatiser le processus de demande d'équipements informatiques et d'accessoires (casques, claviers, souris...) pour une équipe opérationnelle.
@@ -15,6 +16,7 @@ Pour concevoir une solution viable en 5 heures, une distinction claire a été f
 * **Priorités :** Modélisation d'une base de données cloud relationnelle solide, sécurité des écritures multi-utilisateurs et fluidité du cycle de vie des requêtes.
 * **Compromis assumé :** Choix d'une interface **Canvas Mobile-First** (format Téléphone). Ce choix répond à la réalité terrain (les gestionnaires se déplacent dans les stocks pour vérifier le matériel) et a évité de consommer du temps précieux sur du design *responsive* desktop complexe.
   
+
 
 ## 2. Architecture Technique & Modèle de Données
 
@@ -54,6 +56,7 @@ Face aux exigences de co-édition et de robustesse face aux accès simultanés, 
 * **Performance à l'échelle :** SharePoint affiche des alertes de délégation pénalisantes au-delà de 2 000 lignes. Dataverse gère de manière native et fluide des volumes de plusieurs millions d'enregistrements.
 
 
+
 ## 3. Atténuation des Risques de Concurrence, Doublons & Données Obsolètes
 
 Le cœur de cet exercice repose sur la démonstration d'une compréhension des risques de collision de données en environnement multi-utilisateur.
@@ -77,6 +80,8 @@ Refresh(Equipment_Orders)
 
 **Impact :** À chaque fois qu'un utilisateur bascule sur cet écran, l'application invalide instantanément son cache local et force un appel asynchrone vers Dataverse pour afficher la stricte "Source Unique de Vérité".
 
+
+
 ## 4. Périmètre Fonctionnel & Expérience Utilisateur
 L'application implémente une gestion de profils étanches (simulation de rôles) pour fluidifier les parcours utilisateurs :
 
@@ -90,6 +95,8 @@ Visualisation KPI : Un graphique en secteurs (Pie Chart) affiche en temps réel 
 
 **Gestion du cycle de vie :** Les statuts de commande sont modifiables en ligne à l'aide de contrôles de choix sécurisés reprenant les énumérations (Option Sets, mentionné plus tôt dans la colonne Status de la table Equipment_Orders) de Dataverse, éliminant toute saisie libre de texte.
 
+
+
 ## 5. Vision cible et roadmap V2 
 Conformément aux contraintes du projet (livrer un noyau stable en 5 heures), les processus d'arrière-plan lourds ont été volontairement exclus du frontend de l'application pour être intégrés dans une architecture cible industrialisée dans le futur si jugés utiles :
 
@@ -101,6 +108,8 @@ Les fichiers d'inventaire reçus des constructeurs externes étant souvent alté
 
 ### Analyses budgétaires décisionnelles (par exemple, mais on peut faire des dashboards sur d'autres thématiques) Power BI :
 Exploitation du connecteur natif Dataverse (DirectQuery) pour déployer des rapports décisionnels à destination de la direction financière, assurant le suivi des coûts et l'analyse prédictive des ruptures de stocks.
+
+
 
 ## 6. Guide d'Importation & d'Exploration dans Power Apps Studio
 Le fichier .msapp stocké dans ce dépôt est un package binaire propriétaire. Il ne peut pas être ouvert localement sur votre ordinateur et doit être importé dans votre environnement de développement.
